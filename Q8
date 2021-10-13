@@ -1,0 +1,4 @@
+Q8:查询课程编号为“02”的总成绩（不重点）
+select sum(s_score)
+from score
+where c_id = '02'
