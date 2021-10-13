@@ -5,3 +5,16 @@ inner join score as s
 on st.s_id = s.s_id
 where c_id in 
 (select c_id from score where s_id = '01') and st.s_id != '01'
+
+select st.s_id, st.s_name 
+from student as st
+inner join
+(
+select distinct s_id 
+from score
+where c_id in
+(
+select c_id from score where s_id = '01'
+) and s_id != '01'
+) as b
+on st.s_id = b.s_id
