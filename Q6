@@ -1,0 +1,8 @@
+Q6:查询学过“张三”老师所教的所有课的同学的学号、姓名（重点）
+select st.s_id, st.s_name
+from student as st
+inner join score as s on st.s_id = s.s_id
+inner join course as c on s.c_id = c.c_id
+inner join teacher as t on c.t_id = t.t_id
+where t.t_name = '张三'
+order by st.s_id
