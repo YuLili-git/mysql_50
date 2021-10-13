@@ -1,0 +1,6 @@
+Q1:查询课程编号为“01”的课程比“02”的课程成绩高的所有学生的学号（重点）
+select st.s_i
+from student as st
+inner join (select s_id, s_score from score where c_id = '01') as a on st.s_id = a.s_id
+inner join (select s_id, s_score from score where c_id = '02') as b on st.s_id = b.s_id
+where a.s_score > b.s_score
