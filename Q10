@@ -1,0 +1,7 @@
+Q10:查询没有学全所有课的学生的学号、姓名(重点)
+select st.s_id, st.s_name
+from student as st
+left join score as s on st.s_id = s.s_id
+group by st.s_id
+having count(distinct s.c_id) < 
+(select count(distinct c_id) from course)
