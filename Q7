@@ -1,0 +1,9 @@
+Q7：查询学过编号为“01”的课程并且也学过编号为“02”的课程的学生的学号、姓名（重点）
+select st.s_id, st.s_name
+from student as st
+where s_id in
+(select a.s_id from
+((select s_id from score where c_id = '01') as a
+inner join
+(select s_id from score where c_id = '02')) as b
+on a.s_id = b.s_id)
