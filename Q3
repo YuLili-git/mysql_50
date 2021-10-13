@@ -1,0 +1,6 @@
+Q3:查询所有学生的学号、姓名、选课数、总成绩（不重要）
+select st.s_id, st.s_name, count(a.c_id), 
+sum(case when a.s_score is Null then 0  else a.s_score end)
+from student as st
+left join score as a on st.s_id = a.s_id
+group by st.s_id, st.s_name
