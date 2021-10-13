@@ -1,0 +1,16 @@
+Q12:查询和“01”号同学所学课程完全相同的其他同学的学号(重点)
+select distinct s_id 
+from student
+where s_id in
+(
+select s_id 
+from score 
+where s_id != '01' 
+group by s_id
+having count(distinct c_id) = (select count(distinct c_id) from score where s_id = '01')
+) and s_id not in
+(
+select distinct s_id
+from score
+where c_id not in
+(select c_id from score where s_id = '01')))
