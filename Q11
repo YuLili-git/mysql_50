@@ -1,0 +1,7 @@
+Q11:查询至少有一门课与学号为“01”的学生所学课程相同的学生的学号和姓名（重点）
+select distinct st.s_id, st.s_name
+from student as st
+inner join score as s
+on st.s_id = s.s_id
+where c_id in 
+(select c_id from score where s_id = '01') and st.s_id != '01'
