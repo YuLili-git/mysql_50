@@ -1,0 +1,4 @@
+Q4:查询姓“猴”的老师的个数（不重要）
+select count(t_id)
+from teacher
+where t_name like '猴%'
