@@ -1,0 +1,16 @@
+Q5:查询没学过“张三”老师课的学生的学号、姓名（重点）
+select s_id, s_name
+from student
+where s_id not in 
+(select s_id from score where c_id = 
+(select c_id from course where t_id = 
+(select t_id from teacher where t_name = '张三')))
+
+select s_id, s_name
+from student
+where s_id not in
+(select s_id 
+from score as s
+inner join course as c on s.c_id = c.c_id
+inner join teachde as t on c.t_id = t.t_id
+where t.t_name = '张三')
