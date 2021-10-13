@@ -1,0 +1,9 @@
+Q9:查询所有课程成绩小于60分的学生的学号、姓名
+select a.s_id, st.s_name
+from 
+(select s_id, count(c_id) as cnt from score where s_score < 60 group by s_id) as a
+inner join
+(select s_id, count(c_id) as cnt from score group by s_id) as b
+on a.s_id = b.s_id
+inner join student as st on a.s_id = st.s_id
+where a.cnt = b. cnt
